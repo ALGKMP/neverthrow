@@ -59,9 +59,11 @@ export namespace Result {
   }
 }
 
+export type Result<T, E = never> = Ok<T, never>
 export type Result<T, E> = Ok<T, E> | Err<T, E>
 
 export function ok<T, E = never>(value: T): Ok<T, E>
+export function ok<T, E = never>(value: T): T
 export function ok<T extends void = void, E = never>(value: void): Ok<void, E>
 export function ok<T, E = never>(value: T): Ok<T, E> {
   return new Ok(value)
